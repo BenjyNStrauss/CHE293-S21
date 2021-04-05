@@ -1,0 +1,126 @@
+vkabat.jar and entropy.jar are scripts designed to provide users with a simple way to get e6, e20, and vkbat values for each residue.
+
+The output_to_csv.py script was written by Richard Pearson and is a tool to take the raw command line outputs and transfer them to a csv file.
+
+The entropy.jar and vkbat.jar files were written by Benjy Strauss. This readme file was written by Richard Pearson and is
+intended to provide a quick start up guide and provide users with some information on setup.
+
+This document will cover setup first and then simple use instructions.
+
+######################################################################################################
+#                                        SETUP AND DEPENDENCIES                                      #
+######################################################################################################
+
+Note: This should work equally well on Windows, Mac, and Linux OS and on both 32-bit and 62-bit arch.
+However, my install was successfully accomplished using a 64-bit Mac with High Sierra installed.
+
+\\ Java
+Most importantly, you will need Java installed on your computer.
+
+To check if you have Java installed enter the following into the terminal window:
+	java -version
+
+This should return some basic information about which version of java is installed.
+
+Now check to see if it is on your PATH by typing the following:
+	which java
+
+
+\\ Python
+Python and Perl are both required to be installed and should be on your computer's PATH.
+
+To check if you have Python enter the following into your terminal window:
+	python --version
+To check if you have Python on your PATH enter the following into your terminal window:
+	which python
+
+I used Python 3.8.3 which can be downloaded at python.org
+
+\\ Python libraries
+Two known python library dependencies are the libraries called biopython and pandas.
+
+Check to see if your computer has the biopython and pandas library by entering the following into
+your terminal window:
+
+	pip list
+	-or-
+	conda list
+
+A list will be returned and check to see if biopython is in this list. If it is not, type
+the following into the command line:
+
+	pip install biopython
+	pip install pandas
+	-or-
+	conda install biopython
+	conda install pandas
+
+
+\\ Perl
+To check if you have Perl enter the following into your terminal window:
+	perl -v
+To check if you have Perl on your PATH enter the following into your terminal window:
+	which perl
+
+I used Perl 5.28.0 which can be downloaded at perl.org
+
+If you have a mac you can use the following to install perl:
+
+	curl -L http://xrl.us/installperlosx | bash
+
+\\ Perl modules
+The known Perl module dependencies are the following, HTTP::Request and LWP::MediaTypes
+
+To check this enter the following in the terminal:
+
+	instmodsh
+
+Then type l and hit ENTER.
+Check to see if these are 
+
+To install run the following commands:
+
+	\curl -L https://install.perlbrew.pl | bash
+
+	cpan App::cpanminus
+
+	cpanm HTTP::Request
+	
+	cpanm LWP::MediaTypes
+
+ONLY INSTALL THESE PERL MODULES IF THE FOLLOWING TERMINAL COMMANDS DO NOT WORK:
+
+	curl http://www.compbio.dundee.ac.uk/jpred/downloads/jpredapi.tar.gz -o ./jredapi.tar.gz
+
+	tar xzf jpredapi.tar.gz
+
+Test using the following command:
+
+	perl jpredapi submit mode=single format=raw email=name@domain.com name=TestJob1 seq=MQVWPIEGIKKFETLSYLPPLTVEDLLKQIEYLLRSKWVPCLEFSKVGFVYRENHRSPGYYDGRYWTMWKLPMFGCTDATQVLKELEEAKKAYPDAFVRIIGFDNVRQVQLISFIAYKPPGC
+
+If this runs successfully, proceed to the following VERY IMPORTANT STEP (MUST DO IN ORDER):
+
+	java -jar vkbat.jar [enter raw sequence here]
+
+copy the jpredapi file from the JPred_API_client_v_1_5 into the newly created /files/predict/jpred directory then re-run the following command:
+
+	java -jar vkbat.jar [enter raw sequence]
+
+IMPORTANT NOTE: If the above did not properly set-up the files, please feel free to reach out via email at richard.pearson@sjsu.edu so I can help.
+
+
+#######################################################################################################
+#                                       USING THE SCRIPTS                                             #
+#######################################################################################################
+
+How to use entropy.jar (This script provides e6 and e20 values for each residue position)
+
+	java -jar entropy.jar [ENTER RAW SEQUENCE HERE NO BRACKETS]
+
+How to use vkbat.jar (This script provides vkbat values for each residue position)
+
+	java -jar vkbat.jar [ENTER RAW SEQUENCE HERE NO BRACKETS]
+
+How to use output_to_csv.py (Converts input to a csv file)
+
+	python output_to_csv.py [OUTPUT TYPE FOR EXAMPLE, E6, E20, or VKBAT] [SEQUENCE NAME FOR EXAMPLE 1AA7] [RAW SEQUENCE INPUT]
