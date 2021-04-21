@@ -5,7 +5,7 @@ The output_to_csv.py script was written by Richard Pearson and is a tool to take
 The entropy.jar and vkbat.jar files were written by Benjy Strauss. This readme file was written by Richard Pearson and is
 intended to provide a quick start up guide and provide users with some information on setup.
 
-This document will cover setup first and then simple use instructions.
+This document will cover setup first and then simple use instructions.  You can contact Benjynstrauss@gmail.com if you have questions.
 
 ######################################################################################################
 #                                        SETUP AND DEPENDENCIES                                      #
@@ -101,10 +101,6 @@ Test using the following command:
 If this runs successfully, proceed to the following VERY IMPORTANT STEP (MUST DO IN ORDER):
 
 	java -jar vkbat.jar [enter raw sequence here]
-
-copy the jpredapi file from the JPred_API_client_v_1_5 into the newly created /files/predict/jpred directory then re-run the following command:
-
-	java -jar vkbat.jar [enter raw sequence]
 
 IMPORTANT NOTE: If the above did not properly set-up the files, please feel free to reach out via email at richard.pearson@sjsu.edu so I can help.
 
